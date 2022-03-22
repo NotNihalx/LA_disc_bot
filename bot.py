@@ -11,7 +11,7 @@ import requests
 import logging
 
 page = requests.get("https://www.playlostark.com/en-gb/support/server-status").text
-soup = BeautifulSoup(page, 'lxml')
+soup = BeautifulSoup(page, 'html.parser')
 
 # Token
 
