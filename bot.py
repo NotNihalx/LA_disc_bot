@@ -1,6 +1,11 @@
 import lightbulb
 import hikari
 
+from dotenv import load_dotenv
+import os
+
+var = os.getenv('KEY')
+
 from bs4 import BeautifulSoup
 import requests
 import logging
@@ -10,8 +15,7 @@ soup = BeautifulSoup(page, 'lxml')
 
 # Token
 
-bot = lightbulb.BotApp(token='OTU1NjAzNjU5ODgwODA4NDg5.YjkFQg.-zaAGZRKQAPoFVvTncZCp6u7ia4',
-                       default_enabled_guilds=(367059007070011403))
+bot = lightbulb.BotApp(token= var, default_enabled_guilds=(367059007070011403))
 
 # Event Handlers:
 
@@ -309,7 +313,5 @@ async def getServer(ctx: lightbulb.context) -> None:
             print("Invalid servername")
             output = "Could not find server " + ctx.options.servername + " . Please try again."
             await ctx.respond(output)
-
-
 
 bot.run()
