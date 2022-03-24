@@ -13,7 +13,7 @@ import logging
 # Token
 
 prayer_count = 0
-bot = lightbulb.BotApp(token= var, default_enabled_guilds=(367059007070011403, 221193300344832001))
+bot = lightbulb.BotApp(token= var, default_enabled_guilds=(367059007070011403, 221193300344832001, 256614629260787724))
 
 # Event Handlers:
 
