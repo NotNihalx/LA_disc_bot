@@ -10,9 +10,6 @@ from bs4 import BeautifulSoup
 import requests
 import logging
 
-page = requests.get("https://www.playlostark.com/en-gb/support/server-status").text
-soup = BeautifulSoup(page, 'html.parser')
-
 # Token
 
 bot = lightbulb.BotApp(token= var, default_enabled_guilds=(367059007070011403))
@@ -30,6 +27,9 @@ async def printmsg(event):
 @lightbulb.implements(lightbulb.SlashCommand)
 
 async def getServer(ctx: lightbulb.context) -> None:
+    page = requests.get("https://www.playlostark.com/en-gb/support/server-status").text
+    soup = BeautifulSoup(page, 'html.parser')
+
     server_names = []
     status = []
     update_time = soup.find('div', class_='ags-ServerStatus-content-lastUpdated').text.split()
