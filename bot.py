@@ -324,8 +324,8 @@ async def getServer(ctx: lightbulb.context) -> None:
 @lightbulb.command('pray', 'Gets server status')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def offerPrayer(ctx):
-    fname = '/images/prayge.jpg'
-    await ctx.respond("*The Altar of Taiga has recieved your prayers and blesses upon you good rng\n*")
+    fname = hikari.File('/images/prayge.jpg')
+    await ctx.respond("*The Altar of Taiga has recieved your prayers and blesses upon you good rng*\n")
     await ctx.respond(fname)
     prayers_offered +=1
     await ctx.respond(prayers_offered + "prayers offered to the Altar of Taiga")
