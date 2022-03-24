@@ -328,7 +328,11 @@ async def offerPrayer(ctx, count = prayer_count):
     fname = hikari.File('./images/prayge.jpg')
     await ctx.respond("*The Altar of Taiga has recieved your prayers and blesses upon you good rng*\n")
     await ctx.respond(fname)
-    count +=1
-    await ctx.respond(str(count) + "prayers offered to the Altar of Taiga")
+    set_prayer_count(prayer_count)
+    await ctx.respond(str(count) + "(s)" + " prayers offered to the Altar of Taiga")
+
+
+def set_prayer_count(prayer_count):
+    prayer_count +=1
 
 bot.run()
