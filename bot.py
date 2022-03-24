@@ -12,6 +12,7 @@ import logging
 
 # Token
 
+prayer_count = 0
 bot = lightbulb.BotApp(token= var, default_enabled_guilds=(367059007070011403))
 
 # Event Handlers:
@@ -321,12 +322,12 @@ async def getServer(ctx: lightbulb.context) -> None:
 @lightbulb.command('pray', 'Gets server status')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def offerPrayer(ctx):
-    prayer_count = 0
     fname = hikari.File('./images/prayge.jpg')
     await ctx.respond("*The Altar of Taiga has recieved your prayers and blesses upon you good rng*\n")
     await ctx.respond(fname)
+    global prayer_count
     prayer_count +=1
-    await ctx.respond(str(prayer_count) + "(s)" + " prayers offered to the Altar of Taiga")
+    await ctx.respond(str(prayer_count) + " prayer(s) offered to the Altar of Taiga")
 
 
 bot.run()
