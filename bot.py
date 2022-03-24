@@ -333,6 +333,8 @@ async def offerPrayer(ctx, count = prayer_count):
 
 
 def set_prayer_count(prayer_count):
+    print(prayer_count)
     prayer_count +=1
+    print(prayer_count)
 
 bot.run()
