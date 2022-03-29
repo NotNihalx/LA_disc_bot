@@ -83,10 +83,11 @@ async def getServer(ctx: lightbulb.context) -> None:
     match ser_name:
         case "mari":
             ans = formatResults(ser_name, directory, s1)
+            title = str(ctx.options.servername) + ans
             embed = hikari.Embed(
-                title= ctx.respond(ctx.options.servername) + ans,
+                title= title,
                 color='#f3a6f7')
-            
+
             await ctx.respond(embed=embed)
         case "valtan":
             ans = formatResults(ser_name, directory, s1)
