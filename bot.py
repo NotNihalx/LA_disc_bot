@@ -328,7 +328,7 @@ async def offerPrayer(ctx):
     fname = hikari.File('./images/prayge.jpg')
     global prayer_count
     prayer_count += 1
-    footer = str(prayer_count) + " *prayer(s) offered to the Altar of Taiga*"
+    footer = str(prayer_count) + " prayer(s) offered to the Altar of Taiga"
     print(footer)
     footer = "*" + footer + "*"
     print(footer)
@@ -337,7 +337,7 @@ async def offerPrayer(ctx):
         color = '#f3a6f7')
     embed.set_image(fname)
     embed.set_footer(footer)
-    await ctx.respond(embed=embed)
+    await ctx.respond(embed=embed)  
 
 
 
