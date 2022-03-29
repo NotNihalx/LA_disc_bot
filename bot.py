@@ -332,7 +332,7 @@ async def offerPrayer(ctx):
         title="*The Altar of Taiga has recieved your prayers and blesses upon you good rng!*\n",
         color = '#f3a6f7')
     embed.set_image(fname)
-    embed.set_footer(str(prayer_count) + "*prayer(s) offered to the Altar of Taiga*")
+    embed.set_footer("\n*" + str(prayer_count) + "prayer(s) offered to the Altar of Taiga*\n")
     await ctx.respond(embed=embed)
 
 
