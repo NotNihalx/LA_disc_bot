@@ -1,10 +1,13 @@
 import lightbulb
 import hikari
+import time
 
 from dotenv import load_dotenv
 import os
 
 var = os.getenv('KEY')
+
+tempvar = "OTU1NjAzNjU5ODgwODA4NDg5.YjkFQg.rydiJnvLU_P-efKw6fKBynB0Esg" #delete this
 
 from bs4 import BeautifulSoup
 import requests
@@ -13,7 +16,7 @@ import logging
 # Token
 
 prayer_count = 0
-bot = lightbulb.BotApp(token= var,
+bot = lightbulb.BotApp(token= tempvar,
         default_enabled_guilds=(367059007070011403, 221193300344832001, 256614629260787724),
         ignore_bots = True,
         help_slash_command=True)
@@ -339,6 +342,8 @@ async def getServer(ctx: lightbulb.context) -> None:
             embed = hikari.Embed(
                 title=title,
                 color='#f3a6f7')
+
+            await ctx.respond(embed=embed)
 
         case "kadan":
             ans = formatResults(ser_name, directory, s1)
