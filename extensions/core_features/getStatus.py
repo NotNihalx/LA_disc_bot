@@ -1,34 +1,16 @@
-import lightbulb
+#Imports
+
 import hikari
-import time
-
-from dotenv import load_dotenv
-import os
-
-var = os.getenv('KEY')
-
-tempvar = "OTU1NjAzNjU5ODgwODA4NDg5.YjkFQg.rydiJnvLU_P-efKw6fKBynB0Esg" #delete this
-
+import lightbulb
 from bs4 import BeautifulSoup
 import requests
-import logging
 
-# Token
 
-prayer_count = 0
-bot = lightbulb.BotApp(token= tempvar,
-        default_enabled_guilds=(367059007070011403, 221193300344832001, 256614629260787724),
-        ignore_bots = True,
-        help_slash_command=True)
+# GET SERVER STATUS
 
-# Event Handlers:
+serverstatus_plugin = lightbulb.Plugin("server_status", "Grab the server status of any server")
 
-@bot.listen(hikari.GuildMessageCreateEvent)
-
-async def printmsg(event):
-    print(event.content)
-
-@bot.command
+@serverstatus_plugin.command
 @lightbulb.option('servername', 'Name of server')
 @lightbulb.command('serverstatus', 'Gets server status')
 @lightbulb.implements(lightbulb.SlashCommand)
@@ -36,7 +18,6 @@ async def printmsg(event):
 async def getServer(ctx: lightbulb.context) -> None:
     page = requests.get("https://www.playlostark.com/en-gb/support/server-status").text
     soup = BeautifulSoup(page, 'html.parser')
-
     server_names = []
     status = []
     update_time = soup.find('div', class_='ags-ServerStatus-content-lastUpdated').text.split()
@@ -615,22 +596,8 @@ async def getServer(ctx: lightbulb.context) -> None:
 
             await ctx.respond(embed=embed)
 
+def load(bot):
+    bot.add_plugin(serverstatus_plugin)
 
-# pray to taiga's altar
-@bot.command
-@lightbulb.command('pray', 'Gets server status')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def offerPrayer(ctx):
-    fname = hikari.File('./images/prayge.jpg')
-    global prayer_count
-    prayer_count += 1
-    embed = hikari.Embed(
-        title="*The Altar of Taiga has recieved your prayers and blesses upon you good rng!*\n",
-        color = '#f3a6f7')
-    embed.set_image(fname)
-    embed.set_footer(str(prayer_count) + " prayer(s) offered to the Altar of Taiga\n")
-    await ctx.respond(embed=embed)
-
-
-
-bot.run()
+def unload(bot):
+    bot.remove_plugin(serverstatus_plugin)
